@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+@model MVC_SCAFFOLDING.Models.Entity_Model.Product
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container" style="padding: 50px 10px">
+    <h2>Create New Product</h2>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.ProductName)</label>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.ProductName)
+                @Html.ValidationMessageFor(model => model.ProductName)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.SupplierID, "Supplier")</label>
+            <div class="col-md-9">
+                @Html.DropDownList("SupplierID", String.Empty)
+                @Html.ValidationMessageFor(model => model.SupplierID)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.CategoryID, "Category")</label>
+            <div class="col-md-9">
+                @Html.DropDownList("CategoryID", String.Empty)
+                @Html.ValidationMessageFor(model => model.CategoryID)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.QuantityPerUnit)</label>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.QuantityPerUnit)
+                @Html.ValidationMessageFor(model => model.QuantityPerUnit)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.UnitPrice)</label>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.UnitPrice)
+                @Html.ValidationMessageFor(model => model.UnitPrice)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.UnitsInStock)</label>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.UnitsInStock)
+                @Html.ValidationMessageFor(model => model.UnitsInStock)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.UnitsOnOrder)</label>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.UnitsOnOrder)
+                @Html.ValidationMessageFor(model => model.UnitsOnOrder)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col-md-3">@Html.LabelFor(model => model.ReorderLevel)</label>
+            <div class="col-md-9">
+                @Html.EditorFor(model => model.ReorderLevel)
+                @Html.ValidationMessageFor(model => model.ReorderLevel)
+            </div>
+        </div>
+        <div style="padding-top: 20px">
+            @Html.ActionLink("Back to List", "Index", "Product", new { @class = "btn btn-secondary" })
+            <button type="submit" class="btn btn-primary">Create </button>
+        </div>
+    }
+</div>

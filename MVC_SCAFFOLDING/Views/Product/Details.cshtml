@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Details";
+}
+
+@model MVC_SCAFFOLDING.Models.Entity_Model.Product
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container" style="padding: 50px 10px">
+    <h2>Details</h2>
+    <br />
+    <dl class="row">
+        <dt class="col-sm-3">Product Name</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.ProductName)</dd>
+        <dt class="col-sm-3">Supplier Company Name</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Supplier.CompanyName)</dd>
+        <dt class="col-sm-3">Category Name</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Category.CategoryName)</dd>
+        <dt class="col-sm-3">Quantity Per Unit</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.QuantityPerUnit)</dd>
+        <dt class="col-sm-3">Unit Price</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitPrice)</dd>
+        <dt class="col-sm-3">Units In Stock</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitsInStock)</dd>
+        <dt class="col-sm-3">Units On Order</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.UnitsOnOrder)</dd>
+        <dt class="col-sm-3">Reorder Level</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.ReorderLevel)</dd>
+    </dl>
+    <p>
+        @Html.ActionLink("Back to List", "Index", "Product", new { @class = "btn btn-secondary" })
+        @Html.ActionLink("Edit", "Edit", "Product", new { id = Model.CategoryID }, new { @class = "btn btn-warning" })
+    </p>
+</div>

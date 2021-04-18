@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Create";
+}
+
+@model MVC_SCAFFOLDING.Models.Entity_Model.Category
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container" style="padding: 50px 10px">
+    <h2 class="text-center">Create New Category</h2>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="row justify-content-md-center">
+            <label class="col col-md-2">Name</label>
+            <div class="col-md-auto">
+                @Html.EditorFor(model => model.CategoryName)
+                @Html.ValidationMessageFor(model => model.CategoryName)
+            </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <label class="col col-md-2">Description</label>
+            <div class="col-md-auto">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        <div class="row justify-content-md-center" style="padding-top: 20px">
+            <div class="col-md-auto">
+                @Html.ActionLink("Back to List", "Index", "Category", new { @class = "btn btn-secondary" })
+            </div>
+            <div class="col-md-auto">
+                <button type="submit" class="btn btn-primary">Create </button>
+            </div>
+        </div>
+    }
+</div>

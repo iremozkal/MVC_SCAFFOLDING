@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@model IEnumerable<MVC_SCAFFOLDING.Models.Entity_Model.Category>
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container col-md-9 justify-content-center" style="padding: 50px 10px;">
+    <h3 class="text-center">Category Operations
+        <span>@Html.ActionLink("Create New", "Create", "Category", new { @class = "btn btn-success float-right" }) </span>
+    </h3>
+    <br />
+    <table class="table">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Category Description</th>
+            <th scope="col">Operations</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.CategoryID</th>
+                <td>@Html.DisplayFor(modelItem => item.CategoryName) </td>
+                <td>@Html.DisplayFor(modelItem => item.Description) </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CategoryID }, new { @class = "btn btn-warning", @style = "width:70px" })
+                    @Html.ActionLink("Details", "Details", new { id = item.CategoryID }, new { @class = "btn btn-info", @style = "width:70px" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CategoryID }, new { @class = "btn btn-danger", @style = "width:70px" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

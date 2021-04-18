@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Delete";
+}
+
+@model MVC_SCAFFOLDING.Models.Entity_Model.Category
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container" style="padding: 50px 10px">
+    <h2>Delete</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <br />
+    <dl class="row">
+        <dt class="col-sm-3">Category Name</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.CategoryName)</dd>
+        <dt class="col-sm-3">Category Description</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <p>
+            @Html.ActionLink("Back to List", "Index", "Category", new { @class = "btn btn-secondary" })
+            <input class="btn btn-danger" type="submit" value="Delete" />
+        </p>
+    }
+</div>
+
+

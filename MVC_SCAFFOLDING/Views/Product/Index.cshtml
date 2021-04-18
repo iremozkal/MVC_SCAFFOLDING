@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@using PagedList;
+@using PagedList.Mvc;
+
+@model PagedList.IPagedList<MVC_SCAFFOLDING.Models.Entity_Model.Product>
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Assets/Content/PagedList.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container" style="padding: 50px 10px;">
+    <h3 class="text-center">Products
+        <span>@Html.ActionLink("Create New", "Create", "Product", new { @class = "btn btn-success float-right" }) </span>
+    </h3>
+    <br />
+    <table class="table">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Supplier Company</th>
+            <th scope="col">Category Name</th>
+            <th scope="col">Quantity PerUnit</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Units InStock</th>
+            <th scope="col">Units OnOrder</th>
+            <th scope="col">Reorder Level</th>
+            <th scope="col">Operations</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.ProductID</th>
+                <td style="width: 30%">@Html.DisplayFor(model => item.ProductName)</td>
+                <td>@Html.DisplayFor(model => item.Supplier.CompanyName)</td>
+                <td style="width: 20%">@Html.DisplayFor(model => item.Category.CategoryName)</td>
+                <td>@Html.DisplayFor(model => item.QuantityPerUnit)</td>
+                <td>@Html.DisplayFor(model => item.UnitPrice)</td>
+                <td>@Html.DisplayFor(model => item.UnitsInStock)</td>
+                <td>@Html.DisplayFor(model => item.UnitsOnOrder)</td>
+                <td>@Html.DisplayFor(model => item.ReorderLevel)</td>
+                <td style="width: 100%">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-warning", @style = "width:50px" })
+                    @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-info", @style = "width:70px" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-danger", @style = "width:70px" })
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="text-center">
+        @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page }), new PagedListRenderOptions
+        {
+            LinkToFirstPageFormat = "<< First",
+            LinkToPreviousPageFormat = "< Back",
+            LinkToNextPageFormat = "Next >",
+            LinkToLastPageFormat = "Last >>"
+        })
+    </div>
+</div>

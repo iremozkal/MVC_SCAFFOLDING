@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+@model MVC_SCAFFOLDING.Models.Entity_Model.Product
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container align-items-center" style="padding: 50px 10px">
+    <h2 class="">Edit Product</h2>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true) 
+        @Html.HiddenFor(model => model.ProductID)
+        
+        <dl class="row">
+            <dt class="col-sm-2">Product Name</dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Model.ProductName" />
+                @Html.ValidationMessageFor(model => model.ProductName)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Supplier-@Model.SupplierID </dt>
+            <dd class="col-sm-6">
+                @Html.DropDownList("SupplierID", null, String.Empty, new { @class = "form-control", @style = "width:100%" })
+                @Html.ValidationMessageFor(model => model.SupplierID)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Category-@Model.CategoryID</dt>
+            <dd class="col-sm-6">
+                @Html.DropDownList("CategoryID", null, String.Empty, new { @class = "form-control", @style = "width:100%" })
+                @Html.ValidationMessageFor(model => model.CategoryID)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Quantity Per Unit</dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Model.QuantityPerUnit" />
+                @Html.ValidationMessageFor(model => model.QuantityPerUnit)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Unit Price</dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Model.UnitPrice" />
+                @Html.ValidationMessageFor(model => model.UnitPrice)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Units In Stock</dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Model.UnitsInStock" />
+                @Html.ValidationMessageFor(model => model.UnitsInStock)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Units On Order</dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Model.UnitsOnOrder" />
+                @Html.ValidationMessageFor(model => model.UnitsOnOrder)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Reorder Level</dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Model.ReorderLevel" />
+                @Html.ValidationMessageFor(model => model.ReorderLevel)
+            </dd>
+        </dl>        
+        <p class="" style="padding-top: 20px">
+            @Html.ActionLink("Back to List", "Index", "Product", new { @class = "btn btn-secondary" })
+            <button type="submit" class="btn btn-success">Save</button>
+        </p>
+    }
+</div>

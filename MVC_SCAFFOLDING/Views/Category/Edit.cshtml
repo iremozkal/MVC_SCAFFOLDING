@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Edit";
+}
+
+@model MVC_SCAFFOLDING.Models.Entity_Model.Category
+
+<!-- CSS & JS Libraries Start -->
+<link href="~/Assets/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Assets/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Assets/Scripts/bootstrap.js"></script>
+<!-- CSS & JS Libraries End -->
+
+<div class="container align-items-center" style="padding: 50px 10px">
+    <h2 class="">Edit Category</h2>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.CategoryID)
+
+        <dl class="row">
+            <dt class="col-sm-2">Name </dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.CategoryName)" />
+                @Html.ValidationMessageFor(model => model.CategoryName)
+            </dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Description</dt>
+            <dd class="col-sm-6">
+                <input type="text" class="form-control" value="@Html.DisplayFor(model => model.Description)" />
+                @Html.ValidationMessageFor(model => model.Description)
+            </dd>
+        </dl>
+        <p class="" style="padding-top: 20px">
+            @Html.ActionLink("Back to List", "Index", "Category", new { @class = "btn btn-secondary" })
+            <button type="submit" class="btn btn-success">Save</button>
+        </p>
+    }
+</div>
