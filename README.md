@@ -1,4 +1,4 @@
-## MVC_CRUD
+## MVC_SCAFFOLDING
 
 Pagination on Products. Scaffold templates are used to generate code for basic CRUD operations within your ASP.NET MVC applications against your database with the help Entity Framework.
 
